@@ -21,7 +21,10 @@ func main() {
 
 	// Routers
 	e.GET("/", homeHandler)
-	e.GET("/users", users.UserHandler)
+
+	// Users
+	service := users.NewUserService()
+	e.GET("/users", users.GetUserHandler(service))
 
 	// Start server
 	e.Logger.Fatal(e.Start(*server))
@@ -30,5 +33,3 @@ func main() {
 func homeHandler(c echo.Context) error {
 	return c.String(http.StatusOK, "Hello, World!")
 }
-
-

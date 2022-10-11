@@ -10,14 +10,14 @@ type UserResponse struct {
 	Message string `json:"message"`
 }
 
-func UserHandler(c echo.Context) error {
-	us := NewUserService()
-	r := UserResponse{us.GetAll()}
-	return c.JSON(http.StatusOK, r)
+func GetUserHandler(service *UserService) echo.HandlerFunc {
+	return func(c echo.Context) error {
+		r := UserResponse{service.GetAll()}
+		return c.JSON(http.StatusOK, r)
+	}
 }
 
 // services -> repository
-
 type UserService struct {
 }
 
@@ -28,4 +28,3 @@ func NewUserService() *UserService {
 func (us *UserService) GetAll() string {
 	return "Call get user"
 }
-
