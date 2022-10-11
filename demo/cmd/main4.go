@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 
 type A1 struct {
 	id int
@@ -13,11 +15,12 @@ type AService struct {
 
 //  Builder patterns
 func NewAService(id int) AService {
-	return AService{}
+	a1 := A1{999}
+	return AService{"", a1}
 }
 
 func main() {
 	// Create object/instance
 	a2 := NewAService(100)
-	a2.id = 1
+	fmt.Println(a2.id)
 }
