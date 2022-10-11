@@ -3,6 +3,8 @@ package demo_test
 import (
 	"demo"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestFirstCase(t *testing.T) {
@@ -11,4 +13,5 @@ func TestFirstCase(t *testing.T) {
 	if r != "Hello" {
 		t.Errorf("SayHi() = %s want %s", r, expected)
 	}
+	assert.Equal(t, expected, r)
 }
