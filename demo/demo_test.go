@@ -7,6 +7,11 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+// Test
+// Benchmark
+// Example
+// Fuzzy
+
 func TestFirstCase(t *testing.T) {
 	expected := "Hello"
 	r, _ := demo.SayHi()
