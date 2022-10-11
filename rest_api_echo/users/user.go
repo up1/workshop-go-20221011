@@ -11,6 +11,21 @@ type UserResponse struct {
 }
 
 func UserHandler(c echo.Context) error {
-	r := UserResponse{"Call get user"}
+	us := UserService{}
+	r := UserResponse{us.GetAll()}
 	return c.JSON(http.StatusOK, r)
 }
+
+// services -> repository
+
+type UserService struct {
+}
+
+func NewUserService() *UserService {
+	return &UserService{}
+}
+
+func (us *UserService) GetAll() string {
+	return "Call get user"
+}
+
