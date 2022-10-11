@@ -6,6 +6,7 @@ func sayHi() string {
 }
 
 // public function
-func SayHi() string {
-	return sayHi()
+// Error, NotException
+func SayHi() (string, error) {
+	return sayHi(), nil
 }
