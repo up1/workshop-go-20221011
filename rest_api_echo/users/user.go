@@ -11,7 +11,7 @@ type UserResponse struct {
 }
 
 func UserHandler(c echo.Context) error {
-	us := UserService{}
+	us := NewUserService()
 	r := UserResponse{us.GetAll()}
 	return c.JSON(http.StatusOK, r)
 }
