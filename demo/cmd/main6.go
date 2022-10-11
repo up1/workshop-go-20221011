@@ -13,7 +13,8 @@ func main() {
     // Read data from file
     b, err := ioutil.ReadFile("try_panic.go")
     if err != nil {
-        panic("some error")
+		// log.Fatalf("Error %v", err);        
+		panic("some error")
     }
 
     fmt.Println(string(b))
