@@ -7,9 +7,9 @@ import (
 
 func main() {
 	type first struct {
-		b bool    // 1 byte
-		f float64 // 8 bytes
-		i int32   // 4 bytes
+		f float64
+		i int32
+		b bool
 	}
 	a := first{}
 
