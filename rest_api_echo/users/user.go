@@ -4,7 +4,12 @@ import (
 	"net/http"
 
 	"github.com/labstack/echo/v4"
+	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/attribute"
+	oteltrace "go.opentelemetry.io/otel/trace"
 )
+
+var tracer = otel.Tracer("demo-api")
 
 type UserResponse struct {
 	Message string `json:"message"`
@@ -12,6 +17,8 @@ type UserResponse struct {
 
 func GetUserHandler(service *UserService) echo.HandlerFunc {
 	return func(c echo.Context) error {
+		_, span := tracer.Start(c.Request().Context(), "GetUserHandler", oteltrace.WithAttributes(attribute.String("layer", "handler")))
+		defer span.End()
 		r := UserResponse{service.GetAll()}
 		return c.JSON(http.StatusOK, r)
 	}
