@@ -1,11 +1,9 @@
 package users
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/labstack/echo/v4"
-	"go.mongodb.org/mongo-driver/mongo"
 )
 
 type UserResponse struct {
@@ -17,24 +15,6 @@ func GetUserHandler(service *UserService) echo.HandlerFunc {
 		r := UserResponse{service.GetAll()}
 		return c.JSON(http.StatusOK, r)
 	}
-}
-
-// Repository
-type IRepository interface {
-	GetSth() (string, error)
-}
-
-type UserRepository struct {
-	client *mongo.Client
-}
-
-func (r *UserRepository) GetSth() (string, error) {
-    // Get data from MongoDB
-	return "TODO next", fmt.Errorf("TODO next")
-}
-
-func NewUserRepository( client *mongo.Client ) UserRepository {
-	return UserRepository{client: client}
 }
 
 // services -> repository
