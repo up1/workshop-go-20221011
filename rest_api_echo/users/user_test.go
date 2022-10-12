@@ -20,7 +20,7 @@ func TestSuccessWithGet(t *testing.T) {
 	c := e.NewContext(req, rec)
 
 	repo := users.NewUserRepository()
-	service := users.NewUserService(repo)
+	service := users.NewUserService(&repo)
 	users.GetUserHandler(service)(c)
 
 	// Assert
@@ -32,7 +32,7 @@ func TestSuccessWithGetWithRealServer(t *testing.T) {
 	// Setup router
 	e := echo.New()
 	repo := users.NewUserRepository()
-	service := users.NewUserService(repo)
+	service := users.NewUserService(&repo)
 	e.GET("/users", users.GetUserHandler(service))
 
 	// Call API

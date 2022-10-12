@@ -19,11 +19,15 @@ func GetUserHandler(service *UserService) echo.HandlerFunc {
 }
 
 // Repository
+type IRepository interface {
+	GetSth() (string, error)
+}
+
 type UserRepository struct {
 }
 
 func (r *UserRepository) GetSth() (string, error) {
-	return "Call get user", fmt.Errorf("TODO next")
+	return "TODO next", fmt.Errorf("TODO next")
 }
 
 func NewUserRepository() UserRepository {
@@ -32,10 +36,10 @@ func NewUserRepository() UserRepository {
 
 // services -> repository
 type UserService struct {
-	repo UserRepository
+	repo IRepository
 }
 
-func NewUserService(repo UserRepository) *UserService {
+func NewUserService(repo IRepository) *UserService {
 	return &UserService{repo: repo}
 }
 
