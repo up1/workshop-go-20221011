@@ -1,6 +1,7 @@
 package users
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/labstack/echo/v4"
@@ -17,14 +18,24 @@ func GetUserHandler(service *UserService) echo.HandlerFunc {
 	}
 }
 
-// services -> repository
-type UserService struct {
+// Repository
+type UserRepository struct {
 }
 
-func NewUserService() *UserService {
-	return &UserService{}
+func (r *UserRepository) GetSth() (string, error) {
+	return "Call get user", fmt.Errorf("TODO next")
+}
+
+// services -> repository
+type UserService struct {
+	repo UserRepository
+}
+
+func NewUserService(repo UserRepository) *UserService {
+	return &UserService{repo: repo}
 }
 
 func (us *UserService) GetAll() string {
-	return "Call get user"
+	result, _ := us.repo.GetSth()
+	return result
 }
