@@ -42,3 +42,8 @@ services:
       - 9090:9090
     volumes:
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+
+  zipkin:
+    image: openzipkin/zipkin:2
+    ports:
+      - 9411:9411
