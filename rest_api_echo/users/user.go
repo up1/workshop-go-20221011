@@ -25,14 +25,16 @@ type IRepository interface {
 }
 
 type UserRepository struct {
+	client *mongo.Client
 }
 
 func (r *UserRepository) GetSth() (string, error) {
+    // Get data from MongoDB
 	return "TODO next", fmt.Errorf("TODO next")
 }
 
 func NewUserRepository( client *mongo.Client ) UserRepository {
-	return UserRepository{}
+	return UserRepository{client: client}
 }
 
 // services -> repository

@@ -12,7 +12,7 @@ import (
 )
 
 var server = flag.String("server", ":1323", "Host") 
-var url = flag.String("url", "mongodb://user:pass@localhost:27017", "Host") 
+var url = flag.String("url", "mongodb://user:pass@167.172.76.207:27017", "Host") 
 
 func main() {
 	fmt.Println(os.Getenv("SERVER"))
