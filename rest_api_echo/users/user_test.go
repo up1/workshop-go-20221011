@@ -41,6 +41,6 @@ func TestSuccessWithGetWithRealServer(t *testing.T) {
 	e.ServeHTTP(rec, req)
 
 	// Assert
-	assert.Equal(t, rec.Code, 200)
+	assert.Equal(t, 200, rec.Code)
 	assert.Contains(t, rec.Body.String(), "Call get user")
 }
