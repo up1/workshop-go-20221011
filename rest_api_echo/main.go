@@ -9,6 +9,7 @@ import (
 	"os"
 
 	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 )
 
 var server = flag.String("server", ":1323", "Host") 
@@ -19,7 +20,8 @@ func main() {
 	flag.Parse()
 	// Echo server
 	e := echo.New()
-	// Add middlewares
+	// Add global middlewares
+	e.Use(middleware.Recover())
 
 	// Routers
 	e.GET("/", homeHandler)
