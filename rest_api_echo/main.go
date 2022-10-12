@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/labstack/echo-contrib/prometheus"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 )
@@ -21,6 +22,8 @@ func main() {
 	// Echo server
 	e := echo.New()
 	// Add global middlewares
+	p := prometheus.NewPrometheus("echo", nil)
+    p.Use(e)
 	e.Use(middleware.Recover())
 
 	// Routers
