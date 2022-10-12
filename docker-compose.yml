@@ -1,0 +1,11 @@
+version: "3"
+services:
+  api:
+    image: api:1.0
+    build:
+      context: ./rest_api_echo
+      dockerfile: Dockerfile
+    command:
+      - -url=mongodb://user:pass@mongo:27017
+    ports:
+      - 1323:1323
