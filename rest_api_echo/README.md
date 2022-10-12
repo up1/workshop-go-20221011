@@ -28,3 +28,15 @@ $docker-compose ps
 $docker-compose logs --follow
 $docker-compose down
 ```
+
+### Start with docker compose (manual steps)
+```
+$docker-compose up -d mongo
+$docker-compose ps
+$docker-compose up -d api
+$docker-compose ps
+
+$curl http://localhost:1323/users
+
+{"message":"TODO next"}
+```
