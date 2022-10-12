@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/labstack/echo/v4"
+	"go.mongodb.org/mongo-driver/mongo"
 )
 
 type UserResponse struct {
@@ -30,7 +31,7 @@ func (r *UserRepository) GetSth() (string, error) {
 	return "TODO next", fmt.Errorf("TODO next")
 }
 
-func NewUserRepository() UserRepository {
+func NewUserRepository( client *mongo.Client ) UserRepository {
 	return UserRepository{}
 }
 

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"api/internal"
 	"api/users"
 	"flag"
 	"fmt"
@@ -10,7 +11,8 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-var server = flag.String("server", ":1323", "Host")
+var server = flag.String("server", ":1323", "Host") 
+var url = flag.String("url", "mongodb://user:pass@localhost:27017", "Host") 
 
 func main() {
 	fmt.Println(os.Getenv("SERVER"))
@@ -23,7 +25,8 @@ func main() {
 	e.GET("/", homeHandler)
 
 	// Users
-	repo := users.NewUserRepository()
+	client := internal.NewMongoClient(*url)
+	repo := users.NewUserRepository(client)
 	service := users.NewUserService(&repo)
 	e.GET("/users", users.GetUserHandler(service))
 
