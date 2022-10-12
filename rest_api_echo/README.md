@@ -1,5 +1,10 @@
 ## Step to run
 
+### Download dependencies
+```
+$go mod tidy
+```
+
 ### Start server
 ```
 $go run main.go
