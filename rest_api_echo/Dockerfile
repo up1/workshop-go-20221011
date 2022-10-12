@@ -1,7 +1,7 @@
 # Step 1 :: Compile go -> binary file
 FROM golang:1.19.2-alpine3.16 as step_1
 WORKDIR /app
-COPY go.* .
+COPY go.* ./
 # Download dependencies
 RUN go mod tidy 
 COPY . .
