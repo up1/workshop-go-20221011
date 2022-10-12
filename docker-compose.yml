@@ -12,6 +12,8 @@ services:
     depends_on:
       mongo:
         condition: service_healthy
+      redis:
+        condition: service_healthy
 
   mongo:
     image: mongo:6.0.2-focal
@@ -20,6 +22,15 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: pass
     healthcheck:
       test: echo 'db.runCommand({serverStatus:1}).ok' | mongosh -u $$MONGO_INITDB_ROOT_USERNAME -p $$MONGO_INITDB_ROOT_PASSWORD --quiet | grep 1
+      interval: 2s
+      timeout: 5s
+      retries: 5
+      start_period: 3s
+  
+  redis:
+    image: redis:7.0.5-alpine
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
       interval: 2s
       timeout: 5s
       retries: 5
