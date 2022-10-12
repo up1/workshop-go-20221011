@@ -9,15 +9,13 @@ $go mod tidy
 ```
 $go run main.go
 ```
-
+### Testing with tags = integration
+```
+$go test -tags=integration ./... -v
+```
 
 ## Build with docker
 ```
 $docker image build -t api:1.0 .
-```
-
-
-### Testing with tags = integration
-```
-$go test -tags=integration ./... -v
+$docker container run -d -p 1323:1323 api:1.0
 ```
