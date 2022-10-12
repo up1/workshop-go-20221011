@@ -25,7 +25,7 @@ func TestSuccessWithGet(t *testing.T) {
 
 	// Assert
 	assert.Equal(t, rec.Code, 200)
-	assert.Contains(t, rec.Body.String(), "Call get user")
+	assert.Contains(t, rec.Body.String(), "TODO next")
 }
 
 func TestSuccessWithGetWithRealServer(t *testing.T) {
@@ -44,5 +44,5 @@ func TestSuccessWithGetWithRealServer(t *testing.T) {
 
 	// Assert
 	assert.Equal(t, 200, rec.Code)
-	assert.Contains(t, rec.Body.String(), "Call get user")
+	assert.Contains(t, rec.Body.String(), "TODO next")
 }
