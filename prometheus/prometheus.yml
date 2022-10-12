@@ -1,0 +1,6 @@
+scrape_configs:
+  - job_name: "demo_api"
+    # metrics_path defaults to '/metrics'
+    # scheme defaults to 'http'.
+    static_configs:
+      - targets: ["api:1323"]
