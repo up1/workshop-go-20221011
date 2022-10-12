@@ -35,3 +35,8 @@ services:
       timeout: 5s
       retries: 5
       start_period: 3s
+  
+  prometheus:
+    image: prom/prometheus:v2.39.1
+    ports:
+      - 9090:9090
