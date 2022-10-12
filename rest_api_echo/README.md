@@ -19,3 +19,12 @@ $go test -tags=integration ./... -v
 $docker image build -t api:1.0 .
 $docker container run -d -p 1323:1323 api:1.0
 ```
+
+## Working with Docker compose
+```
+$docker-compose build
+$docker-compose up -d
+$docker-compose ps
+$docker-compose logs --follow
+$docker-compose down
+```
