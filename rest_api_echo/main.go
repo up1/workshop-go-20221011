@@ -23,7 +23,7 @@ func main() {
 	e.GET("/", homeHandler)
 
 	// Users
-	repo := users.UserRepository{}
+	repo := users.NewUserRepository()
 	service := users.NewUserService(repo)
 	e.GET("/users", users.GetUserHandler(service))
 

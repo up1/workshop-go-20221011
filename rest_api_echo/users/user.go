@@ -26,6 +26,10 @@ func (r *UserRepository) GetSth() (string, error) {
 	return "Call get user", fmt.Errorf("TODO next")
 }
 
+func NewUserRepository() UserRepository {
+	return UserRepository{}
+}
+
 // services -> repository
 type UserService struct {
 	repo UserRepository

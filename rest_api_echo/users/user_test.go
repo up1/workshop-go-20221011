@@ -19,7 +19,7 @@ func TestSuccessWithGet(t *testing.T) {
 	req := httptest.NewRequest(http.MethodGet, "/users", nil)
 	c := e.NewContext(req, rec)
 
-	repo := users.UserRepository{}
+	repo := users.NewUserRepository()
 	service := users.NewUserService(repo)
 	users.GetUserHandler(service)(c)
 
@@ -31,7 +31,7 @@ func TestSuccessWithGet(t *testing.T) {
 func TestSuccessWithGetWithRealServer(t *testing.T) {
 	// Setup router
 	e := echo.New()
-	repo := users.UserRepository{}
+	repo := users.NewUserRepository()
 	service := users.NewUserService(repo)
 	e.GET("/users", users.GetUserHandler(service))
 
